@@ -69,4 +69,5 @@ var f = function (v) {
 var calculateMonthlyPayment = function (principal, years, rate) {
 var calculateMonthlyPayment = (principal, years, rate) => {
 ```
-ok~~我们的demo基本实现了。
+ok~~我们的Tutorial基本完成了。
+未完待续
