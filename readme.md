@@ -15,3 +15,6 @@ let是ES6 用来声明变量的，用法类似于var，但是let所声明的变�
   </body>
 </html>
 打开你的编辑器我们先在./js/main.js文件里写入一个方法。暂定方法名叫做calculateMonthlyPayment
+var calculateMonthlyPayment = function () {
+
+}
