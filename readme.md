@@ -63,3 +63,8 @@ var f = function (v) {
   return v
 }
 ```
+我们再次编辑 ./js/main.js 文件
+```javascript
+var calculateMonthlyPayment = function (principal, years, rate) {
+var calculateMonthlyPayment = (principal, years, rate) => {
+```    
