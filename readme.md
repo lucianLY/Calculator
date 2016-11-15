@@ -25,10 +25,15 @@ let是ES6 用来声明变量的，用法类似于var，但是let所声明的变�
   </body>
 </html>
 ```
-打开你的编辑器我们先在./js/main.js文件里写入一个方法。暂定方法名叫做calculateMonthlyPayment
+打开你的编辑器我们先在 ./js/main.js 文件里写入一个方法。暂定方法名叫做calculateMonthlyPayment。我们需要给calculateMonthlyPayment番薯配置三个参数，分别是页面中需要输入的principal、year、rate
 
 ```javascript
-var calculateMonthlyPayment = function () {
-
+var calculateMonthlyPayment = function (principal, year, rate) {
+  if(rate){
+    var monthlyRate = rate/100/12
+  }
+  var monthluPayment = (principal * monthlyRate)/(1-(Math.pow(1/(1 + monthlyRate), years * 12)))
+  return monthluPayment
 }
 ```
+好吧，这个函数看起来没有什么别特的。请注意这里有三个var声明的变量，用let替换所有的var，这样我们的js文件就包含了ES6啦。
