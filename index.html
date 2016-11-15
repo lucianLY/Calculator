@@ -3,20 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>按揭计算机</title>
-    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js'></script>
+    <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div class="">
-      Principal: <span><input type="text" class='principal'></span>
+    <div class="header">
+      按揭计算器
     </div>
-    <div class="">
-      Year: <span><input type="text" class='year'></span>
+    <div class="table">
+      <div class="row">
+        Principal: <span><input type="text" id='principal' class="input"></span>
+      </div>
+      <div class="row">
+        Years: <span><input type="text" id='years' class="input"></span>
+      </div>
+      <div class="row">
+        Rate: <span><input type="text" id='rate' class="input"></span>
+      </div>
+      <div id="submit" class="button">Calculate</div>
     </div>
-    <div class="">
-      Rate: <span><input type="text" class='rate'></span>
-    </div>
-    <button>Calculate</button>
-    <div class="monthluPayment">
+    <div id="Payment">
 
     </div>
     <script type="text/javascript" src='./js/main.js'></script>

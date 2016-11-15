@@ -2,14 +2,14 @@ var calculateMonthlyPayment = (principal, years, rate) => {
   if(rate){
     var monthlyRate = rate/100/12
   }
-  var monthluPayment = (principal * monthlyRate)/(1-(Math.pow(1/(1 + monthlyRate), years * 12)))
-  return {principal,years,rate,monthluPayment,monthlyRate}
+  var monthlyPayment = (principal * monthlyRate)/(1-(Math.pow(1/(1 + monthlyRate), years * 12)))
+  return {principal,years,rate,monthlyPayment,monthlyRate}
 }
 
-$('button').click(function () {
-  let principal = $('.principal').val()
-  let year = $('.year').val()
-  let rate = $('.rate').val()
-  let {monthluPayment,monthlyRate} = calculateMonthlyPayment(principal, year, rate)
-  $('.monthluPayment').html(monthluPayment)
+document.getElementById('submit').addEventListener('click', function () {
+  let principal = document.getElementById('principal').value
+  let years = document.getElementById('years').value
+  let rate = document.getElementById('rate').value
+  var {monthlyPayment,monthlyRate} = calculateMonthlyPayment(principal, years, rate)
+  document.getElementById('Payment').innerHtml = monthlyPayment
 })
