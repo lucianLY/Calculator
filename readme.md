@@ -63,8 +63,9 @@ var f = function (v) {
   return v
 }
 ```
-我们再次编辑 ./js/main.js 文件
+我们再次编辑 ./js/main.js 文件,把function去掉用=>进行替换。
 ```javascript
 var calculateMonthlyPayment = function (principal, years, rate) {
 var calculateMonthlyPayment = (principal, years, rate) => {
-```    
+```
+ok~~我们的demo基本实现了。
