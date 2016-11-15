@@ -11,6 +11,16 @@ let是ES6 用来声明变量的，用法类似于var，但是let所声明的变�
     <title>按揭计算机</title>
   </head>
   <body>
+    <div class="">
+      Principal: <span><input type="text" class='principal'></span>
+    </div>
+    <div class="">
+      Year: <span><input type="text" class='year'></span>
+    </div>
+    <div class="">
+      Rate: <span><input type="text" class='rate'></span>
+    </div>
+    <button>Calculate</button>
     <script type="text/javascript" src='./js/main.js'></script>
   </body>
 </html>
