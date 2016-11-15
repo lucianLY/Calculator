@@ -44,6 +44,13 @@ var calculateMonthlyPayment = function (principal, year, rate) {
   var monthluPayment = (principal * monthlyRate)/(1-(Math.pow(1/(1 + monthlyRate), years * 12)))
   return monthluPayment
 }
+document.getElementById('submit').addEventListener('click', function () {
+  var principal = document.getElementById('principal').value
+  var years = document.getElementById('years').value
+  var rate = document.getElementById('rate').value
+  var monthlyPayment = calculateMonthlyPayment(principal, years, rate)
+  document.getElementById('Payment').innerHtml = monthlyPayment
+})
 ```
 好吧，这个函数看起来没有什么别特的。请注意这里有三个var声明的变量，用let替换所有的var，这样我们的js文件就包含了ES6啦。
 ##2) 变量的解构 Destructuring
