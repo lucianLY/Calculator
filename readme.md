@@ -10,19 +10,26 @@ let是ES6 用来声明变量的，用法类似于var，但是let所声明的变�
   <head>
     <meta charset="utf-8">
     <title>按揭计算机</title>
+    <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div class="">
-      Principal: <span><input type="text" class='principal'></span>
+    <div class="header">
+      按揭计算器
     </div>
-    <div class="">
-      Year: <span><input type="text" class='year'></span>
+    <div class="table">
+      <div class="row">
+        Principal: <span><input type="text" id='principal' class="input"></span>
+      </div>
+      <div class="row">
+        Years: <span><input type="text" id='years' class="input"></span>
+      </div>
+      <div class="row">
+        Rate: <span><input type="text" id='rate' class="input"></span>
+      </div>
+      <div id="submit" class="button">Calculate</div>
     </div>
-    <div class="">
-      Rate: <span><input type="text" class='rate'></span>
+    <div id="Payment">
     </div>
-    <button>Calculate</button>
-    <h2>Monthly Payment: <span id="monthlyPayment" class="currency"></span></h2>
     <script type="text/javascript" src='./js/main.js'></script>
   </body>
 </html>
