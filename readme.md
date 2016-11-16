@@ -3,7 +3,7 @@
   这是一个简单的tutorial，旨在学习认识ES6。教程中会设计到一些基础理论知识，再此不做过多讲解。Tutorial的目的在于串联ES6中的语法特性，从而得到对知识的深入理解。
   制作一个简单的按揭计算器，通过输入贷款金额、年份、利率获取一个明细表。
   哪我们会涉及哪些知识呢？
-  EMAScript6、Gulp等
+  EMAScript6、Gulp、Webpack等
   ----我们不生产知识、只做知识的搬运工。
 ##1) let 变量 let Variables
 let是ES6 用来声明变量的，用法类似于var，但是let所声明的变量，只在let所在的代码块内有效。
@@ -114,6 +114,49 @@ let calculateAmortization = (principal, years, rate) => {
 let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate)
 ```
 ok~~我们的Tutorial基本完成了。
-##3) 设置Webpack Setting up Webpack
-
+##4) 设置Webpack Setting up Webpack
+Webpack 是当下热门的前端资源模块化管理工具和打包工具(本文打包使用了Gulp)。
+现在打开命令行，进入你的项目文件目录，安装babel-loader
+```javascript
+npm install babel-loader webpack --save-dev
+```
+我们新建一个package.json文件
+##5) 创建一个Module Create Module
+首先我们新建一个文件mortgage.js把它放在js文件夹下 ,然后我们把已经写好的calculateMonthlyPayment和calculateAmortization函数赋值进来。并函数前面添加export关键字，使之成为公共模块API的一部分。
+```javascript
+export let calculateMonthlyPayment = (principal, years, rate) => {
+  let monthlyRate = 0
+  if (rate) {
+    monthlyRate = rate/100/12
+  }
+  let monthlyPayment = (principal * monthlyRate)/(1-(Math.pow(1/(1 + monthlyRate), years * 12)))
+  return {principal,years,rate,monthlyPayment,monthlyRate}
+}
+export let calculateAmortization = (principal, years, rate) => {
+  let {monthlyPayment, monthlyRate} = calculateMonthlyPayment(principal, years, rate)
+  let balance = principal
+  let amortization = []
+  for (let y = 0; y < years; y++) {
+    let interestY = 0
+    let principalY = 0
+    for (let m = 0; m < 12; m++) {
+      let interestM = balance * monthlyRate
+      let principalM = monthlyPayment - interestM
+      interestY = interestY + interestM
+      principalY = principalY + principalM
+      balance = balance - principalM
+    }
+    amortization.push({principalY, interestY, balance})
+  }
+  return {monthlyPayment, monthlyRate, amortization}
+}
+```
+接下来，我们把 js/main.js 文件里的 calculateMonthlyPayment和calculateAmortization函数删除，添加一行代码在文件的第一行位置
+```javascript
+import * as mortgage from './mortgage'
+```
+修改一下调用calculateAmortization的地方
+```javascript
+let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization(principal, years, rate)
+```
 未完待续
