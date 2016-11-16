@@ -110,4 +110,6 @@ let calculateAmortization = (principal, years, rate) => {
 }
 ```
 ok~~我们的Tutorial基本完成了。
+##3) 设置Webpack Setting up Webpack
+
 未完待续
