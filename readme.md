@@ -3,7 +3,7 @@
   这是一个简单的tutorial，旨在学习认识ES6。教程中会设计到一些基础理论知识，再此不做过多讲解。Tutorial的目的在于串联ES6中的语法特性，从而得到对知识的深入理解。
   制作一个简单的按揭计算器，通过输入贷款金额、年份、利率获取一个明细表。
   哪我们会涉及哪些知识呢？
-  EMAScript6、Gulp等 
+  EMAScript6、Gulp等
   ----我们不生产知识、只做知识的搬运工。
 ##1) let 变量 let Variables
 let是ES6 用来声明变量的，用法类似于var，但是let所声明的变量，只在let所在的代码块内有效。
@@ -86,6 +86,28 @@ var f = function (v) {
 ```javascript
 var calculateMonthlyPayment = function (principal, years, rate) {
 var calculateMonthlyPayment = (principal, years, rate) => {
+```
+是时候，修改一下 ./js/main.js 紧接着我们写一个 calculateAmortization 方法当然啦，还是要用箭头定义的。
+分别这只principal, years, rate这三个参数，并在函数内调用calculateMonthlyPayment对结果进行进一步计算。
+```javascript
+let calculateAmortization = (principal, years, rate) => {
+  let {monthlyPayment, monthlyRate} = calculateMonthlyPayment(principal, years, rate)
+  let balance = principal
+  let amortization = []
+  for (let y = 0; y < years; y++) {
+    let interestY = 0
+    let principalY = 0
+    for (let m = 0; m < 12; m++) {
+      let interestM = balance * monthlyRate
+      let principalM = monthlyPayment - interestM
+      interestY = interestY + interestM
+      principalY = principalY + principalM
+      balance = balance - principalM
+    }
+    amortization.push({principalY, interestY, balance})
+  }
+  return {monthlyPayment, monthlyRate, amortization}
+}
 ```
 ok~~我们的Tutorial基本完成了。
 未完待续
