@@ -109,6 +109,10 @@ let calculateAmortization = (principal, years, rate) => {
   return {monthlyPayment, monthlyRate, amortization}
 }
 ```
+修改calculateMonthlyPayment调用的地方。
+```javascript
+let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate)
+```
 ok~~我们的Tutorial基本完成了。
 ##3) 设置Webpack Setting up Webpack
 
