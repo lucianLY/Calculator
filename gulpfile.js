@@ -5,7 +5,7 @@ var es = require('gulp-es6-transpiler')
 gulp.task('js', ['transpiler'],function () {
   return gulp.src('dist/*.js')
   .pipe(uglify())
-  //.pipe(rename({extname: '.min.js'}))
+  .pipe(rename({extname: '.min.js'}))
   .pipe(gulp.dest('./resource'))
 })
 gulp.task('transpiler', function () {

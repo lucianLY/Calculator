@@ -114,7 +114,7 @@ let calculateAmortization = (principal, years, rate) => {
 let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate)
 ```
 ok~~我们的Tutorial基本完成了。
-##3) ES6里的Fetch
+##4) ES6里的Fetch
 首先我们先要从XMLHttpRequest开始谈起，XMLHttpRequest作为了当前WEB应用与远程资源进行通信的基础，本段介绍的内容则是XMLHttpRequest的替代技术Fetch API。
 Fetch API 提供了一个fetch()方法，可以使用它来发起远程资源请求，并返回一个Promise对象，让我们能够对请求的返回结果进行检索，
 ```javascript
@@ -139,5 +139,40 @@ fetch(req).then(function(response) {
 ```
 Fetch 常见坑
 Fetch 请求默认不带cookie，需要设置 fetch(url, {credentials: 'include'})
+##4) 使用 Gulp 对代码进行转换压缩
+首先我们新建一个gukofile.js文件将其存放在根目录下。
+安装全局gulp和项目开发依赖的devDependencies
+```javascript
+npm install --global gulp
+npm install --save-dev gulp
+```
+安装完成之后打开gukofile.js文件
+```javascript
+var gulp = require('gulp')
+gulp.task('default', function () {
+  // 这里写任务
+})
+```
+然后我们继续安装gulp的包 gulp-rename，gulp-uglify，gulp-es6-transpiler，cssnano
+分别是处理重命名、压缩js、es6转换es5、cs压缩任务
+```javascript
+var gulp = require('gulp')
+var rename = require('gulp-rename')
+var uglify = require('gulp-uglify')
+var es = require('gulp-es6-transpiler')
+gulp.task('js', ['transpiler'],function () {
+  return gulp.src('dist/*.js')
+  .pipe(uglify())
+  .pipe(rename({extname: '.min.js'}))
+  .pipe(gulp.dest('./resource'))
+})
+gulp.task('transpiler', function () {
+  return gulp.src('./js/main.js')
+  .pipe(es())
+  .pipe(rename({extname: '.min.js'}))
+  .pipe(gulp.dest('./resource/'))
+})
+gulp.task('default', ['transpiler','js'])
 
+```
 未完待续
