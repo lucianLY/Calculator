@@ -139,7 +139,7 @@ fetch(req).then(function(response) {
 ```
 Fetch 常见坑
 Fetch 请求默认不带cookie，需要设置 fetch(url, {credentials: 'include'})
-##4) 使用 Gulp 对代码进行转换压缩
+##5) 使用 Gulp 对代码进行转换压缩
 首先我们新建一个gulpfile.js文件将其存放在根目录下。
 安装全局gulp和项目开发依赖的devDependencies
 ```javascript
