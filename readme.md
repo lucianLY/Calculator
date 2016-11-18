@@ -179,6 +179,5 @@ gulp.task('transpiler', function () {
   .pipe(gulp.dest('./resource/'))
 })
 gulp.task('default', ['transpiler','js'])
-
 ```
 未完待续
