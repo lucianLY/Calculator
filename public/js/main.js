@@ -35,13 +35,22 @@ document.getElementById('submit').addEventListener('click', function () {
   document.getElementById('monthlyRate').innerHTML = (monthlyRate * 100).toFixed(2)
   amortization.forEach(month => console.log(month))
 })
+
+// function getTitle () {
+//   var http = new Request('./', {method :'GET', chche :'reload'})
+//   return fetch(http).then(function (response) {
+//     return response.json()
+//     console.log(response.json())
+//   })
+// }
 function getTitle () {
-  fetch('./json', {method: 'get'})
+  return fetch('./json', {method: 'get'})
   .then(function (response) {
-    response.json().then(function (data) {
-      console.log()
-      document.getElementById('title').innerHTML = data.title
-    })
+    return response.json()
   }).catch(function (err) {})
 }
-getTitle()
+ let json = getTitle()
+json.then(function (data) {
+  console.log(data)
+  document.getElementById('title').innerHTML = data.title
+})

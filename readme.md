@@ -114,4 +114,30 @@ let calculateAmortization = (principal, years, rate) => {
 let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate)
 ```
 ok~~我们的Tutorial基本完成了。
+##3) ES6里的Fetch
+首先我们先要从XMLHttpRequest开始谈起，XMLHttpRequest作为了当前WEB应用与远程资源进行通信的基础，本段介绍的内容则是XMLHttpRequest的替代技术Fetch API。
+Fetch API 提供了一个fetch()方法，可以使用它来发起远程资源请求，并返回一个Promise对象，让我们能够对请求的返回结果进行检索，
+```javascript
+function fetch () {
+  fetch(url).then(function (response) {
+
+  }).then(function (json) {
+
+  })
+
+```
+首先构造请求的URL，然后将对URL传递给全局的fetch()方法，他会立刻返回一个Promise，当Promise被通过，他就会返回一个Response对象，通过该对象的json()方法就可以将结果作为JSON对象返回。同样response.json()会返回一个Promise对象，因此在我们的例子中可以继续链接一个then()方法。
+为什么要替代XMLHttpRequest？
+对于传统的XMLHttpRequest而言，你必须使用它的一个实例来执行请求和检索返回的响应，但是通过Fetch API我们还能明确配置的请求对象。通过Request构造器函数创建一个新的请求，第一个参数是请求的url，第二个参数是选项用于配置请求
+```javascript
+var req = new Request(URL, {method: 'GET', cache: 'reload'});
+fetch(req).then(function(response) {
+  return response.json()
+}).then(function(json) {
+  insertPhotos(json)
+});
+```
+Fetch 常见坑
+Fetch 请求默认不带cookie，需要设置 fetch(url, {credentials: 'include'})
+
 未完待续
