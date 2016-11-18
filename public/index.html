@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div class="header">
-      按揭计算器
+    <div class="header" id='title'>
+
     </div>
+    <script>
+    //document.getElementById("title").innerHTML="2 Header"
+    </script>
     <div class="table">
       <div class="row">
         Principal: <span><input type="text" id='principal' class="input"></span>
@@ -27,7 +30,7 @@
     <div id="row">
       monthly Rate <span id="monthlyRate"></span>
     </div>
-    <script type="text/javascript" src='./js/main.js'></script>
     <script type="text/javascript" src='./js/lodash.min.js'></script>
+    <script type="text/javascript" src='./js/main.js'></script>
   </body>
 </html>

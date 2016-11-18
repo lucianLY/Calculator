@@ -29,9 +29,19 @@ document.getElementById('submit').addEventListener('click', function () {
   let principal = document.getElementById('principal').value
   let years = document.getElementById('years').value
   let rate = document.getElementById('rate').value
-  let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization(principal, years, rate)
+  let {monthlyPayment, monthlyRate, amortization} = calculateAmortization(principal, years, rate)
   console.log(monthlyPayment, monthlyRate)
-  document.getElementById('monthlyPayment').innerHtml = monthlyPayment.toFixed(2)
-  document.getElementById('monthlyRate').innerHtml = (monthlyRate * 100).toFixed(2)
+  document.getElementById('monthlyPayment').innerHTML = monthlyPayment.toFixed(2)
+  document.getElementById('monthlyRate').innerHTML = (monthlyRate * 100).toFixed(2)
   amortization.forEach(month => console.log(month))
 })
+function getTitle () {
+  fetch('./json', {method: 'get'})
+  .then(function (response) {
+    response.json().then(function (data) {
+      console.log()
+      document.getElementById('title').innerHTML = data.title
+    })
+  }).catch(function (err) {})
+}
+getTitle()
