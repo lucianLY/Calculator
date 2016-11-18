@@ -156,6 +156,12 @@ gulp.task('default', function () {
 然后我们继续安装gulp的包 gulp-rename，gulp-uglify，gulp-es6-transpiler，cssnano
 分别是处理重命名、压缩js、es6转换es5、cs压缩任务
 ```javascript
+npm install gulp-rename
+npm install --save-dev gulp-uglify
+npm npm install --save-dev gulp-es6-transpiler
+npm install cssnano
+```
+```javascript
 var gulp = require('gulp')
 var rename = require('gulp-rename')
 var uglify = require('gulp-uglify')

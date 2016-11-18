@@ -2,7 +2,7 @@ var gulp = require('gulp')
 var rename = require('gulp-rename')
 var uglify = require('gulp-uglify')
 var es = require('gulp-es6-transpiler')
-gulp.task('js', ['transpiler'],function () {
+gulp.task('js', ['transpiler'], function () {
   return gulp.src('dist/*.js')
   .pipe(uglify())
   .pipe(rename({extname: '.min.js'}))
