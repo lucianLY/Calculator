@@ -140,13 +140,13 @@ fetch(req).then(function(response) {
 Fetch 常见坑
 Fetch 请求默认不带cookie，需要设置 fetch(url, {credentials: 'include'})
 ##4) 使用 Gulp 对代码进行转换压缩
-首先我们新建一个gukofile.js文件将其存放在根目录下。
+首先我们新建一个gulpfile.js文件将其存放在根目录下。
 安装全局gulp和项目开发依赖的devDependencies
 ```javascript
 npm install --global gulp
 npm install --save-dev gulp
 ```
-安装完成之后打开gukofile.js文件
+安装完成之后打开gulpfile.js文件
 ```javascript
 var gulp = require('gulp')
 gulp.task('default', function () {
@@ -160,12 +160,15 @@ npm install gulp-rename
 npm install --save-dev gulp-uglify
 npm npm install --save-dev gulp-es6-transpiler
 npm install cssnano
+npm install gulp-html-minify
 ```
+全部安装完毕之后，我们就可以写任务了，我们继续编辑gulpfile.js
 ```javascript
 var gulp = require('gulp')
 var rename = require('gulp-rename')
 var uglify = require('gulp-uglify')
 var es = require('gulp-es6-transpiler')
+var htmlminify = require('gulp-html-minify')
 gulp.task('js', ['transpiler'],function () {
   return gulp.src('dist/*.js')
   .pipe(uglify())
@@ -178,6 +181,16 @@ gulp.task('transpiler', function () {
   .pipe(rename({extname: '.min.js'}))
   .pipe(gulp.dest('./resource/'))
 })
-gulp.task('default', ['transpiler','js'])
+gulp.task('html', function () {
+  return gulp.src('js/m.html')
+  .pipe(htmlminify())
+  .pipe(gulp.dest('./dist'))
+})
+gulp.task('css', function () {
+  return gulp.src('css/*.css')
+  .pipe(postcss([require('cssnano')]))
+  .pipe(gulp.dest('./resource'))
+})
+gulp.task('default', ['transpiler','js','css','html'])
 ```
 未完待续
